@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2023a">
-  <configuration build-checksum="3255807239" file="D:\project\Alliance2024\2024_wheel_leg\Matlab\function\leg_spd.prj" location="D:\project\Alliance2024\2024_wheel_leg\Matlab\function" name="leg_spd" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="223361477" file="D:\Wheel\WheelLeg_sim-main\aaatest.prj" location="D:\Wheel\WheelLeg_sim-main" name="aaatest" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -49,7 +49,7 @@
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
-      <param.VerificationStatus>option.VerificationStatus.Passed</param.VerificationStatus>
+      <param.VerificationStatus>option.VerificationStatus.FailedTest</param.VerificationStatus>
       <param.EnableMexProfiling>false</param.EnableMexProfiling>
       <var.BuiltWithMexProfiling>false</var.BuiltWithMexProfiling>
       <param.CustomSourceCode />
@@ -185,9 +185,9 @@
       <var.SimdQueryHardwareType>MATLAB Host Computer</var.SimdQueryHardwareType>
       <param.InstructionSetExtensionsAvailableInUI>true</param.InstructionSetExtensionsAvailableInUI>
       <param.InstructionSetExtensions>None</param.InstructionSetExtensions>
-      <param.SaturateOnIntegerOverflow>false</param.SaturateOnIntegerOverflow>
+      <param.SaturateOnIntegerOverflow>true</param.SaturateOnIntegerOverflow>
       <param.PurelyIntegerCode>false</param.PurelyIntegerCode>
-      <param.SupportNonFinite>false</param.SupportNonFinite>
+      <param.SupportNonFinite>true</param.SupportNonFinite>
       <param.LoopUnrollThreshold>5</param.LoopUnrollThreshold>
       <param.EnableAutoParallelization>false</param.EnableAutoParallelization>
       <param.NumberOfCpuThreads>0</param.NumberOfCpuThreads>
@@ -288,11 +288,11 @@
       <param.CodeReplacementLibrary>None</param.CodeReplacementLibrary>
       <param.DeprecatedCRLFlag>false</param.DeprecatedCRLFlag>
       <param.SameHardware>true</param.SameHardware>
-      <param.Toolchain>Automatically locate an installed toolchain</param.Toolchain>
-      <param.BuildConfiguration>Faster Runs</param.BuildConfiguration>
+      <param.Toolchain>CMake</param.Toolchain>
+      <param.BuildConfiguration>Debug</param.BuildConfiguration>
       <param.CustomToolchainOptions />
       <var.ToolchainSettingsVisible>true</var.ToolchainSettingsVisible>
-      <var.ToolchainSupportsBuildConfigurations>true</var.ToolchainSupportsBuildConfigurations>
+      <var.ToolchainSupportsBuildConfigurations>false</var.ToolchainSupportsBuildConfigurations>
       <param.target.Data>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;ctdata&gt;&lt;configuredHardware/&gt;&lt;/ctdata&gt;</param.target.Data>
       <param.target.ActiveType>option.target.TargetType.MatlabHost</param.target.ActiveType>
       <param.target.ActiveTarget />
@@ -401,7 +401,9 @@
         <var.SimdQueryHardwareType />
         <param.InstructionSetExtensionsAvailableInUI />
         <param.InstructionSetExtensions />
+        <param.SaturateOnIntegerOverflow />
         <param.PurelyIntegerCode />
+        <param.SupportNonFinite />
         <param.LoopUnrollThreshold />
         <param.EnableAutoParallelization />
         <param.NumberOfCpuThreads />
@@ -502,8 +504,6 @@
         <param.CodeReplacementLibrary />
         <param.DeprecatedCRLFlag />
         <param.SameHardware />
-        <param.Toolchain />
-        <param.BuildConfiguration />
         <param.CustomToolchainOptions />
         <var.ToolchainSettingsVisible />
         <var.ToolchainSupportsBuildConfigurations />
@@ -592,17 +592,22 @@
       </unset>
     </profile>
     <param.objective>option.objective.c</param.objective>
-    <param.WorkflowStep>workflowSummary</param.WorkflowStep>
+    <param.WorkflowStep>generateCode</param.WorkflowStep>
     <param.TestSnippets>
-      <item>leg_spd_test</item>
+      <item>aaatest</item>
     </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\leg_spd\leg_spd.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\codegen\lib\aaatest\aaatest.lib</param.outputfile>
     <param.version>R2012a</param.version>
     <param.HasECoderFeatures>true</param.HasECoderFeatures>
     <param.HasGpuCoder>true</param.HasGpuCoder>
     <var.HasNeuralNetworkToolbox>true</var.HasNeuralNetworkToolbox>
+    <param.newGlobals>
+      <Globals>
+        <idpTable />
+      </Globals>
+    </param.newGlobals>
     <param.mex.mainhtml />
     <param.grt.mainhtml />
     <param.CallGeneratedCodeFromTest>true</param.CallGeneratedCodeFromTest>
@@ -613,7 +618,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>529809864</param.AnnotationChecksum>
+    <param.AnnotationChecksum>670667990</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -621,15 +626,15 @@
     <var.DismissScreener>false</var.DismissScreener>
     <param.unifiedParamStorage />
     <param.hdlParamStorage />
-    <var.gc.lastOutputRoot>codegen\lib\leg_spd</var.gc.lastOutputRoot>
+    <var.gc.lastOutputRoot>codegen\lib\aaatest</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>3255807239</var.gc.preBuildChecksum>
-    <var.cfi.lastOutputRoot>codegen\mex\leg_spd</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>912728657</var.cfi.preBuildChecksum>
-    <var.lastCfiTestSnippet>leg_spd_test</var.lastCfiTestSnippet>
+    <var.gc.preBuildChecksum>223361477</var.gc.preBuildChecksum>
+    <var.cfi.lastOutputRoot>codegen\mex\aaatest</var.cfi.lastOutputRoot>
+    <var.cfi.preBuildChecksum>1721375116</var.cfi.preBuildChecksum>
+    <var.lastCfiTestSnippet>aaatest</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\project\Alliance2024\2024_wheel_leg\Matlab\function\leg_spd.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;1317153620&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\project\Alliance2024\2024_wheel_leg\Matlab\function\leg_spd.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\Wheel\WheelLeg_sim-main\aaatest.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3739998682&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\Wheel\WheelLeg_sim-main\aaatest.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -643,10 +648,10 @@
     <param.EnableStructExplosion>true</param.EnableStructExplosion>
     <param.ForceANSIC>false</param.ForceANSIC>
     <param.NumCompileJobs>1</param.NumCompileJobs>
-    <param.mex.outputfile>leg_spd_mex</param.mex.outputfile>
-    <param.grt.outputfile>leg_spd</param.grt.outputfile>
+    <param.mex.outputfile>aaatest_mex</param.mex.outputfile>
+    <param.grt.outputfile>aaatest</param.grt.outputfile>
     <param.artifact>option.target.artifact.lib</param.artifact>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\leg_spd\leg_spd.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\codegen\lib\aaatest\aaatest.lib</param.outputfile>
     <param.CppNamespace />
     <param.CppPackagesToNamespaces>true</param.CppPackagesToNamespaces>
     <param.CppNamespaceForMathworksCode>coder</param.CppNamespaceForMathworksCode>
@@ -673,7 +678,7 @@
     <param.gpu.MinPoolSize>8</param.gpu.MinPoolSize>
     <param.gpu.MaxPoolSize>2048</param.gpu.MaxPoolSize>
     <var.checkIssuesGpu>false</var.checkIssuesGpu>
-    <var.hasGpu>false</var.hasGpu>
+    <var.hasGpu>true</var.hasGpu>
     <var.isDeepLearningForMatlabCoderEnabled>true</var.isDeepLearningForMatlabCoderEnabled>
     <param.deeplearning.EnableDeepLearning>false</param.deeplearning.EnableDeepLearning>
     <param.deeplearning.DeepLearningCustomCallback />
@@ -694,7 +699,7 @@
     <param.cmsis-nn.DataType>option.arm-compute.datatype.int8</param.cmsis-nn.DataType>
     <param.cmsis-nn.CalibrationResultFile />
     <param.none.LearnablesCompression>option.none.LearnablesCompression.None</param.none.LearnablesCompression>
-    <var.ToolchainCanRunBuildArtifact>true</var.ToolchainCanRunBuildArtifact>
+    <var.ToolchainCanRunBuildArtifact>false</var.ToolchainCanRunBuildArtifact>
     <param.TargetLang>option.TargetLang.CPP</param.TargetLang>
     <param.EnableAutoExtrinsicCalls>true</param.EnableAutoExtrinsicCalls>
     <param.EnableImplicitExpansion>true</param.EnableImplicitExpansion>
@@ -880,27 +885,23 @@
       <param.FixedPointUseDesignRanges />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\leg_spd.m">
-        <Marker>1711812307576</Marker>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\aaatest.m">
+        <Marker>1728217370581</Marker>
       </file>
     </fileset.entrypoints>
-    <fileset.testbench>
-      <file>D:\project\Alliance2024\2024_wheel_leg\Matlab\test\leg_spd_test.m</file>
-    </fileset.testbench>
+    <fileset.testbench />
     <fileset.inputtypes>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\leg_spd.m">
-        <Inputs fileName="leg_spd.m" functionName="leg_spd">
-          <Input Name="dphi1" typeId="0" />
-          <Input Name="dphi4" typeId="0" />
-          <Input Name="phi1" typeId="0" />
-          <Input Name="phi4" typeId="0" />
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\aaatest.m">
+        <Inputs fileName="aaatest.m" functionName="aaatest">
+          <Input Name="in1" typeId="0" />
+          <Input Name="in2" typeId="0" />
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
               <Size>1 x 1</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
@@ -909,11 +910,11 @@
       </file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\codegen\lib\leg_spd" name="leg_spd.lib" optional="false">D:\project\Alliance2024\2024_wheel_leg\Matlab\function\codegen\lib\leg_spd\leg_spd.lib</file>
+      <file location="${PROJECT_ROOT}\codegen\lib\aaatest" name="aaatest.lib" optional="false">D:\Wheel\WheelLeg_sim-main\codegen\lib\aaatest\aaatest.lib</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2023b</root>
+      <root>D:\Robomaster\MATLAB\app</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />

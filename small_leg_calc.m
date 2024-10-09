@@ -1,12 +1,11 @@
 % VMC解算优化版本，大幅减少计算量
-if ~exist(fullfile(pwd, 'data', 'leg_calc.mat'), 'file')
 clear;
 tic;
 syms phi1_t(t) phi2_t(t) phi_dot_1 phi_dot_2;
 syms l1 l2 ;
 syms L0 phi0;
 
-%进行几何计算
+%1进行几何计算
 x_B = l1 * cos(phi1_t);
 y_B = l1 * sin(phi1_t);
 x_C = x_B + l2 * cos(phi2_t);
@@ -25,7 +24,7 @@ y_dot_C = subs(y_dot_C, diff(phi2_t, t), phi_dot_2);
 y_dot_C = subs(y_dot_C, ...
     [diff(phi1_t, t)], ...
     [phi_dot_1]);
-% 求雅可比矩阵
+% 求速度雅可比矩阵
 x_dot = [x_dot_C; y_dot_C];
 q_dot = [phi_dot_1; phi_dot_2];
 x_dot = simplify(collect(x_dot, q_dot));
@@ -47,7 +46,6 @@ syms T1 T2;
 T_tr = Tf \ [T1; T2];
 T_tr = simplify(T_tr);
 disp('几何计算完毕');
-
 syms phi1 phi2;
 L0_=sqrt(x_C^2+y_C^2);
 phi0_=atan2(y_C, x_C);
@@ -59,15 +57,19 @@ pos_t = [L0_; theta];
 pos = formula(pos_t);
 pos = subs(pos, [phi1_t(t) phi2_t(t)], [phi1 phi2]);
 disp('5%');
-%syms dphi1 dphi2;
-%Ts = subs(Ts, [phi2_t(t) phi3_t(t) L0 phi0], [phi2_t_ phi3_t_ L0_ phi0_]);
-%Ts = simplify(Ts);
+% 位置雅可比矩阵
+L0_=subs(L0_, [phi1_t(t) phi2_t(t)], [phi1 phi2]);
+phi0_=subs(phi0_, [phi1_t(t) phi2_t(t)], [phi1 phi2]);
 
-%spd_t = Ts * [dphi1; dphi2];
-%spd = formula(spd_t);
-%spd = subs(spd, [phi1_t(t) phi2_t(t)], [phi1 phi2]);
-disp('45%');
-
+J11=diff(L0_,phi1);
+J12=diff(L0_,phi2);
+J21=diff(phi0_,phi1);
+J22=diff(phi0_,phi2);
+J_p=[J11 J12; J21 J22];
+% 求解末端速度
+spd=J_p*[phi_dot_1;phi_dot_2];
+spd=simplify(spd);
+spd=formula(spd);
 % 求得VMC转换矩阵
 syms F Tp;
 Tf = subs(Tf, [L0 phi0], [L0_ phi0_]);
@@ -83,19 +85,19 @@ T_r = formula(T_tr);
 T_r = subs(T_r, [phi1_t(t) phi2_t(t)], [phi1 phi2]);
 disp('带入角度计算完毕，储存结果');
 save("data/leg_calc.mat");
-end
+
 %% 赋值计算
 toc;
 clear;
 tic;
 load("data/leg_calc.mat");
-l1_=0.1;l2_=0.1;
+l1_=0.18;l2_=0.18;  %误差0.5mm
 pos =subs (pos,[l1 l2],[l1_ l2_]);
-%spd = subs(spd, [l1 l2], [l1_ l2_]) 听说计算有误，待验证
+spd = subs(spd, [l1 l2], [l1_ l2_]);
 T = subs(T, [l1 l2], [l1_ l2_]);
 T_r = subs(T_r, [l1 l2], [l1_ l2_]);
+matlabFunction(spd, 'File', 'function/spd_calc');
 matlabFunction(pos, 'File', 'function/leg_pos');
 matlabFunction(T, 'File', 'function/leg_conv');
 matlabFunction(T_r, 'File', 'function/leg_conv_reverse');
 disp('函数已生成');
-toc;

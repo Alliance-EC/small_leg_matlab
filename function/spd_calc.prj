@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2023a">
-  <configuration build-checksum="1510857585" file="D:\Wheel\small_leg\small_leg_MATLAB\function\leg_conv.prj" location="D:\Wheel\small_leg\small_leg_MATLAB\function" name="leg_conv" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2817009873" file="D:\Wheel\small_leg\small_leg_MATLAB\function\spd_calc.prj" location="D:\Wheel\small_leg\small_leg_MATLAB\function" name="spd_calc" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex />
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -596,19 +596,16 @@
     </profile>
     <param.objective>option.objective.c</param.objective>
     <param.WorkflowStep>workflowSummary</param.WorkflowStep>
-    <param.TestSnippets />
+    <param.TestSnippets>
+      <item>spd_calc(phi1,phi2,phi_dot_1,phi_dot_2)</item>
+    </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\leg_conv\leg_conv.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\codegen\lib\spd_calc\spd_calc.lib</param.outputfile>
     <param.version>R2012a</param.version>
     <param.HasECoderFeatures>true</param.HasECoderFeatures>
     <param.HasGpuCoder>true</param.HasGpuCoder>
     <var.HasNeuralNetworkToolbox>true</var.HasNeuralNetworkToolbox>
-    <param.newGlobals>
-      <Globals>
-        <idpTable />
-      </Globals>
-    </param.newGlobals>
     <param.mex.mainhtml />
     <param.grt.mainhtml />
     <param.CallGeneratedCodeFromTest>true</param.CallGeneratedCodeFromTest>
@@ -619,7 +616,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>535092802</param.AnnotationChecksum>
+    <param.AnnotationChecksum>3588967358</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -627,14 +624,14 @@
     <var.DismissScreener>false</var.DismissScreener>
     <param.unifiedParamStorage />
     <param.hdlParamStorage />
-    <var.gc.lastOutputRoot>codegen\lib\leg_conv</var.gc.lastOutputRoot>
+    <var.gc.lastOutputRoot>codegen\lib\spd_calc</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>4147336182</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>3093131331</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot />
     <var.cfi.preBuildChecksum />
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\Wheel\small_leg\small_leg_MATLAB\function\leg_conv.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;4280627047&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\Wheel\small_leg\small_leg_MATLAB\function\leg_conv.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\Wheel\small_leg\small_leg_MATLAB\function\spd_calc.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;2381986138&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\Wheel\small_leg\small_leg_MATLAB\function\spd_calc.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -648,10 +645,10 @@
     <param.EnableStructExplosion>true</param.EnableStructExplosion>
     <param.ForceANSIC>false</param.ForceANSIC>
     <param.NumCompileJobs>1</param.NumCompileJobs>
-    <param.mex.outputfile>leg_conv_mex</param.mex.outputfile>
-    <param.grt.outputfile>leg_conv</param.grt.outputfile>
+    <param.mex.outputfile>spd_calc_mex</param.mex.outputfile>
+    <param.grt.outputfile>spd_calc</param.grt.outputfile>
     <param.artifact>option.target.artifact.lib</param.artifact>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\leg_conv\leg_conv.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\codegen\lib\spd_calc\spd_calc.lib</param.outputfile>
     <param.CppNamespace />
     <param.CppPackagesToNamespaces>true</param.CppPackagesToNamespaces>
     <param.CppNamespaceForMathworksCode>coder</param.CppNamespaceForMathworksCode>
@@ -750,7 +747,6 @@
     <param.FixedPointUseDesignRanges>false</param.FixedPointUseDesignRanges>
     <unset>
       <param.objective />
-      <param.TestSnippets />
       <param.ExternalFcnMajority />
       <param.UseGlobals />
       <param.outputfile />
@@ -888,18 +884,18 @@
       <param.FixedPointUseDesignRanges />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\leg_conv.m">
-        <Marker>1728477423965</Marker>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\spd_calc.m">
+        <Marker>1728479944783</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench />
     <fileset.inputtypes>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\leg_conv.m">
-        <Inputs fileName="leg_conv.m" functionName="leg_conv">
-          <Input Name="F" typeId="0" />
-          <Input Name="Tp" typeId="0" />
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\spd_calc.m">
+        <Inputs fileName="spd_calc.m" functionName="spd_calc">
           <Input Name="phi1" typeId="0" />
           <Input Name="phi2" typeId="0" />
+          <Input Name="phi_dot_1" typeId="0" />
+          <Input Name="phi_dot_2" typeId="0" />
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
@@ -915,7 +911,7 @@
       </file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\codegen\lib\leg_conv" name="leg_conv.lib" optional="false">D:\Wheel\small_leg\small_leg_MATLAB\function\codegen\lib\leg_conv\leg_conv.lib</file>
+      <file location="${PROJECT_ROOT}\codegen\lib\spd_calc" name="spd_calc.lib" optional="false">D:\Wheel\small_leg\small_leg_MATLAB\function\codegen\lib\spd_calc\spd_calc.lib</file>
     </build-deliverables>
     <workflow />
     <matlab>
