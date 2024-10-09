@@ -1,0 +1,6 @@
+rt_nonfinite.obj
+rtGetNaN.obj
+rtGetInf.obj
+leg_conv_reverse_initialize.obj
+leg_conv_reverse_terminate.obj
+leg_conv_reverse.obj
