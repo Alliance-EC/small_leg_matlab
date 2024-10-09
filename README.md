@@ -4,8 +4,10 @@
 - Matlab R2023b 
 ### 2. 文件结构
 ```
+
+
 │  sys_calc.m           系统参数计算
-│  leg_calc.m           腿参数计算/VMC
+(改)│  small_leg_calc.m     腿参数计算/VMC
 
 │  lb_sfit.sfit         腿长拟合(cftool)
 │  leg_sfit.sfit        转动惯量拟合(cftool)
@@ -17,11 +19,12 @@
 │  sys_calc_whx.m       哈工程建模，未完成
 │  sys_sim_whx.slx
 
-/data               数据文件
-/function           生成的函数
-/test               测试函数
-/IMU_position       加速度计定位测试
-/kalman_observer    卡尔曼观测器
+\function\codegen\lib 	生成的cpp函数
+/data               	数据文件
+/function           	生成的函数
+/test               	测试函数
+/IMU_position       	加速度计定位测试
+/kalman_observer    	卡尔曼观测器
 ```
 ### 3.使用指南
 
