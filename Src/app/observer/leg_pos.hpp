@@ -8,6 +8,7 @@
 
 // Include Files
 #include <cmath>
+#include <numbers>
 namespace app::observer {
 // Function Definitions
 //
@@ -28,6 +29,11 @@ void leg_pos(double phi1, double phi2, double pos[2]) {
     b_a_tmp = std::cos(phi1) * 0.18 + std::cos(phi2) * 0.18;
     pos[0]  = std::sqrt(a_tmp * a_tmp + b_a_tmp * b_a_tmp);
     pos[1]  = 1.5707963267948966 - std::atan2(a_tmp, b_a_tmp);
+    if (pos[1] < -std::numbers::pi) {
+        pos[1] += 2 * std::numbers::pi;
+    } else if (pos[1] > std::numbers::pi) {
+        pos[1] -= 2 * std::numbers::pi;
+    }
 }
 
 } // namespace app::observer

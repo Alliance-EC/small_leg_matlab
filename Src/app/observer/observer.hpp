@@ -118,7 +118,7 @@ private:
         leg_length_.L = data[0];                                // ll
         leg_length_.L = length_L_LPF_.update(leg_length_.L);
 
-        angle_L_ = data[1] + imu_euler_->y();                   // 5 theta_ll
+        angle_L_ = -data[1] + imu_euler_->y();                  // 5 theta_ll
         angle_L_ = angle_L_LPF_.update(angle_L_);
 
         angle_Ld_    = (angle_L_ - last_angle_L) / dt_;         // 6 theta_lld
@@ -127,14 +127,14 @@ private:
         leg_length_.Ld = (leg_length_.L - last_length_L) / dt_; // lld
         last_length_L  = leg_length_.L;
 
-        watch_data[0]  = leg_length_.L;
-            /*右腿虚拟腿角度和长度*/
-            leg_pos(M3508_[leg_RB]->get_angle(), M3508_[leg_RF]->get_angle(), data);
+        watch_data[0] = leg_length_.R;
+        /*右腿虚拟腿角度和长度*/
+        leg_pos(M3508_[leg_RB]->get_angle(), M3508_[leg_RF]->get_angle(), data);
 
         leg_length_.R = data[0];                                // lr
         leg_length_.R = length_R_LPF_.update(leg_length_.R);
 
-        angle_R_ = data[1] + imu_euler_->y();                   // 7 theta_lr
+        angle_R_ = -data[1] + imu_euler_->y();                  // 7 theta_lr
         angle_R_ = angle_R_LPF_.update(angle_R_);
 
         angle_Rd_    = (angle_R_ - last_angle_R) / dt_;         // 8 theta_lrd
@@ -145,7 +145,7 @@ private:
 
         leg_length_avg_ = (leg_length_.L + leg_length_.R) / 2.0f;
 
-        watch_data[1] = leg_length_.R;
+        watch_data[1] = angle_R_;
     }
 
     void wheel_update() {

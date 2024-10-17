@@ -40,7 +40,10 @@ public:
 
             if (((RC_->switch_left == RC_Switch::MIDDLE) && (RC_->switch_right == RC_Switch::DOWN))
                 || balanceless_mode_) {
-                reset_all_controls();
+                if (last_switch_right != RC_Switch::DOWN) {
+                    reset_all_controls();
+                }
+
                 *mode_ = chassis_mode::balanceless;
             } else if (RC_->switch_right == RC_Switch::MIDDLE) {
                 if (last_switch_right != RC_Switch::MIDDLE) {
@@ -63,6 +66,7 @@ public:
             case chassis_mode::spin: set_states_desire(0, spinning_velocity); break;
             case chassis_mode::balanceless:
                 set_states_desire(RC_->joystick_right.x(), RC_->joystick_right.y());
+                set_length_desire(RC_->joystick_left.x());
                 break;
             default: break;
             }

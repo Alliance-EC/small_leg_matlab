@@ -74,10 +74,10 @@ public:
         /*对于单编码器关节电机，角度偏移包括上电启动时*/
         auto angle = DjiMotor::get_angle();
         switch (DjiMotor::get_index() + 1) {
-        case 1: angle += std::numbers::pi / 2; break;
-        case 2: angle += 4.06; break;
-        case 3: angle = std::numbers::pi / 2 - angle; break;
-        case 4: angle = 4.06 - angle; break;
+        case 1: angle = std::numbers::pi / 2 - angle; break;
+        case 2: angle = 4.06 - angle; break;
+        case 3: angle += std::numbers::pi / 2; break;
+        case 4: angle += 4.06; break;
         default: break;
         }
         return angle;

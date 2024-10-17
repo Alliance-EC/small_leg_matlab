@@ -13,6 +13,8 @@
 #include <cmath>
 #include <limits>
 
+double watch_data_c[2];
+
 namespace app::controller {
 
 using namespace tool;
@@ -76,10 +78,10 @@ private:
     PID pid_roll_               = PID({500, 0.0, 1, 500, 0.0, 0.0, dt});
     PID pid_length_             = PID({1500, 10, 200, 500, 100.0, 0.0, dt});
     /*非平衡状态腿控参数*/
-    PID pid_length_l_ = PID({1500, 10, 200, 500, 100.0, 0.0, dt});
-    PID pid_length_r_ = PID({1500, 10, 200, 500, 100.0, 0.0, dt});
-    PID pid_angle_l_  = PID({0, 0, 0, 0, 0.0, 0.0, dt});
-    PID pid_angle_r_  = PID({0, 0, 0, 0, 0.0, 0.0, dt});
+    PID pid_length_l_ = PID({500, 5, 10, 200, 40.0, 0.0, dt});
+    PID pid_length_r_ = PID({500, 5, 10, 200, 40.0, 0.0, dt});
+    PID pid_angle_l_  = PID({20, 1, 3, 100, 20.0, 0.0, dt});
+    PID pid_angle_r_  = PID({20, 1, 3, 100, 20.0, 0.0, dt});
 
     observer::observer* observer_        = observer::observer::GetInstance();
     DesireSet* desire_                   = controller::DesireSet::GetInstance();
@@ -91,6 +93,7 @@ private:
     const observer::leg_length* leg_length_       = &observer_->leg_length_;
     const double* length_desire_                  = &desire_->desires.leg_length;
     const double* roll_desire_                    = &desire_->desires.roll;
+    // const double* leg_angle_desire_                    = &desire_->desires.roll;
     const Eigen::Vector3f *imu_euler = nullptr, *imu_gyro = nullptr;
     const chassis_mode* mode_ = nullptr;
 
@@ -139,10 +142,12 @@ private:
     void leg_controller_balanceless() {
         constexpr double LEG_MOTOR_T_MAX = 6.0f;
 
-        F_l    = pid_length_l_.update(*length_desire_, leg_length_->L);
-        F_r    = pid_length_r_.update(*length_desire_, leg_length_->R);
-        T_bll_ = pid_angle_l_.update(0.0, 0.0);
-        T_blr_ = pid_angle_r_.update(0.0, 0.0);
+        F_l          = pid_length_l_.update(*length_desire_, leg_length_->L);
+        F_r          = pid_length_r_.update(*length_desire_, leg_length_->R);
+        T_bll_       = pid_angle_l_.update(0.0, (*x_states_)(4, 0));
+        T_blr_       = pid_angle_r_.update(0.0, (*x_states_)(6, 0));
+        watch_data_c[0] = *length_desire_;
+        watch_data_c[1] = (*x_states_)(6, 0);
 
         /*VMC解算到关节电机扭矩*/
         static double leg_T[2] = {};
@@ -150,7 +155,7 @@ private:
         control_torque_.leg_LB = std::clamp(leg_T[0], -LEG_MOTOR_T_MAX, LEG_MOTOR_T_MAX);
         control_torque_.leg_LF = std::clamp(leg_T[1], -LEG_MOTOR_T_MAX, LEG_MOTOR_T_MAX);
 
-        leg_conv(-6.0, 0.0, M3508_[leg_RB]->get_angle(), M3508_[leg_RF]->get_angle(), leg_T);
+        leg_conv(F_r, T_blr_, M3508_[leg_RB]->get_angle(), M3508_[leg_RF]->get_angle(), leg_T);
         control_torque_.leg_RB = std::clamp(leg_T[0], -LEG_MOTOR_T_MAX, LEG_MOTOR_T_MAX);
         control_torque_.leg_RF = std::clamp(leg_T[1], -LEG_MOTOR_T_MAX, LEG_MOTOR_T_MAX);
     }
