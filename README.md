@@ -1,25 +1,28 @@
-# 串联腿Matlab仿真（五连杆改）
-### 1. 仿真环境
+# WheelLeg H7
+基于DM-MC02的轮腿运动控制
 
-- Matlab R2023b 
-### 2. 文件结构
-```
-│  sys_calc.m           	系统参数计算
-(改)│  small_leg_calc.m     腿参数计算/VMC
+1. ## 操作说明
 
-│  lb_sfit.sfit        	 	腿长拟合(cftool)
-│  leg_sfit.sfit        	转动惯量拟合(cftool)
+   ### 遥控器
+   拨杆：
+   |       |    右下     |  右中  | 右上  |
+   | :---: | :----: | :----: | :----: |
+   | 左下  |    stop     | follow | spin  |
+   | 左中  | balanceless | follow | spin  |
+   | 左上  |             | follow | spin  |
 
-│  leg_sim.slx          	五连杆仿真
-│  leg_sim_calc.m       	用于从仿真中拟合腿部数据
-│  sys_sim.slx          	系统仿真
+   > 建议先把左拨杆置中，再把右拨杆置中，进入follow模式
+   >
+   > 关闭时强烈建议先将右拨杆置下进入balanceless模式，再将左拨杆置下停止
 
-│  sys_calc_whx.m       	哈工程建模，未完成
-│  sys_sim_whx.slx
+   ### 键鼠
 
-\function\codegen\lib 		生成的cpp函数
-/data               		数据文件
-/test               		测试函数，目前为空
-/IMU_position       		加速度计定位测试
-/kalman_observer    		卡尔曼观测器
-```
+   > 建议遥控器双中进入键鼠控制模式
+
+   - 倒地模式：按R进入，再按退出
+   - 旋转模式：按C进入，再按退出
+   - 跟随模式：WS控制前后
+   - 侧身模式：AD控制左右侧身，侧身后按AD实现左右移动，按WS恢复跟随
+   - 腿长控制：Q伸腿，E收腿，按F设置腿长为0.18m，按G设置为0.25m
+
+1. 

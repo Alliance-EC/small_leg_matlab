@@ -1,11 +1,21 @@
-codegen/
-slprj/
-/data/*
-/function/*.m
+# dot files
+/.vscode/launch.json
+/.settings
+/.eide/log
+/.eide.usr.ctx.json
 
-*.slxc
-*.asv
-*.csv
-*.bak
-*.autosave
-*.mexw64
+# project out
+/build
+/bin
+/obj
+/out
+
+# eide template
+*.ept
+*.eide-template
+
+.cproject
+.mxproject
+.project
+*.ioctmprsv
+*.jdebug.user
